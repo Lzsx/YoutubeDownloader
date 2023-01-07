@@ -39,7 +39,6 @@ def CheckPaths(paths: list) -> list:
             print(f"[bold red]{paths[p]} doesn't exists")
     return ex
 
-
 def ShowOptions(options: list):
     for opt in range(len(options)):
         print(f"    {opt} | {options[opt]}")

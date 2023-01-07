@@ -15,7 +15,7 @@ def main():
     print("OPTIONS:")
     ShowOptions(options)
     available_options = dir(Downloader)[-3:]
-    option = available_options[IntPrompt.ask("Choose the option",choices=[str(i) for i in range(3)],default=0)]
+    option = available_options[IntPrompt.ask("Choose the option",choices=[str(i) for i in range(3)],default=0,show_choices=False)]
 
     # getting path
     try:
@@ -26,7 +26,7 @@ def main():
             print("PATHS: ")
             ShowOptions(paths)
     except BaseException:
-        print("Error while reading paths.json")
+        print("[bold red]Error while reading paths.json")
     path = input("Choose a custom or existing paths(blank = ./):") or "./"
     if path.isnumeric() and int(path) <= len(paths):
         d = Downloader(video, paths[int(path)])
@@ -34,7 +34,7 @@ def main():
         d = Downloader(video, path)
     print(f"Downloading {d.title}...")
     getattr(d, option)()
-    print("Video Downloaded!")
+    print("[bold green]Downloaded :cake:")
 
 
 if __name__ == "__main__":
